@@ -1,0 +1,25 @@
+# ── 本地/派生内容，不随包分发 ────────────────────────────────────────────
+# 原始素材：47MB 的 nebula-loop.mp4 加编码中间产物，只用于重新生成壁纸
+source/
+# 本机 profile 回滚标记
+.profile-recovery/
+# 本机停用的插件市场条目（含本机绝对路径）
+.disabled-registry/
+# 纯本机调试脚本（硬编码 C:\Users\mjsx\...）
+diagnose.cmd
+
+# 工作备份：壁纸调色前的原件，随时可回退
+bundle/assets/*.orig.jpg
+
+# 临时产物
+bundle/_tmp_*
+bundle/*.bmp
+
+# 打包产物（11MB），发 Release 时手动上传，不入库
+*.tgz
+
+# monorepo 专用的开发脚本（verify.sh / deploy.sh）在本仓库跑不起来：
+# 里面的测试与 profile 路径假设自己位于 <repo>/themes/<name>/，
+# 独立仓库里没有那一层。这两个脚本留在开发仓库的工作副本里。
+deploy.sh
+verify.sh
