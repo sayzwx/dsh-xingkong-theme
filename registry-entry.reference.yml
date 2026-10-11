@@ -19,13 +19,16 @@
 #   · 仓库需声明 dsh.bundle ✓（本包根目录的 package.json 有）并加 dsh-plugin topic
 #   · 仓库需创建满 1 天、有真实可运行代码
 #
-# screenshots 字段（依据 market 前端 client.js 的实际消费方式）：
-#   · 卡片上的缩略图**只认这个字段**；没有它，卡片会显示「正在查找预览…」
-#   · README 里 `![]()` 的图只在安装详情弹窗里出现（只有弹窗才去抓 README）
-#   · 必须 https，域名在白名单内：raw.githubusercontent.com /
-#     user-images.githubusercontent.com / camo.githubusercontent.com / github.com
-#   · .svg 会被丢弃（那是 logo / 徽章的形状），最多 6 张
-#   · 用 HEAD 而非分支名或 tag：HEAD 永远指向默认分支，不会腐烂
+# ⚠️ 截图**不在这个条目里**声明（这条最容易踩错）：
+# 规范要求截图放在**插件自己的仓库** —— 与 package.json 并列的 screenshots.json，
+# 路径相对该文件，1-8 张。往本条目里写 screenshots: 是**无效字段**：
+#   · 上游 4500 条现有条目里，screenshots: 字段使用数为 0
+#   · PR 模板原文："Screenshots go in your own repository now... Nothing to add here"
+#   · 绝对 URL 写在这边只会静默腐烂（已发布的 773 张截图里有 41 张因此变 404），
+#     相对路径则在你自己的仓库里改名就能立刻发现
+# 我们仓库里的 screenshots.json：
+#   ["docs/screenshots/light.jpg", "docs/screenshots/dark.jpg",
+#    "docs/screenshots/model-probe.jpg"]
 #
 # tarball 字段（预编译包，市场会优先给下载链接而不是源码构建命令）：
 #   · 必须是该仓库 GitHub Release 托管的 https .tgz
@@ -41,7 +44,3 @@ tarball: https://github.com/sayzwx/dsh-xingkong-theme/releases/download/v1.13.0/
 description:
   en: "Deep-space theme for the Harness Web GUI: two fully designed light and dark palettes over a seamless cross-dissolve nebula wallpaper, plus a model probe that reports which configured models actually answer and their real context window."
   zh: "深空观测站主题：浅色与深色两套完整设计，衬在无痕交叉溶解的星云动态壁纸之上；附带模型检验面板，告诉你哪些模型真的可用、真实上下文窗口有多大。"
-screenshots:
-  - https://raw.githubusercontent.com/sayzwx/dsh-xingkong-theme/HEAD/docs/screenshots/light.jpg
-  - https://raw.githubusercontent.com/sayzwx/dsh-xingkong-theme/HEAD/docs/screenshots/dark.jpg
-  - https://raw.githubusercontent.com/sayzwx/dsh-xingkong-theme/HEAD/docs/screenshots/model-probe.jpg
